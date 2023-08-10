@@ -35,6 +35,7 @@ public class Util {
         properties.setProperty("hibernate.connection.password", DB_PASSWORD);
         properties.setProperty("show_sql", String.valueOf(true));
         properties.setProperty("dialect", "(org.hibernate.dialect.MySQL8Dialect");
+        properties.setProperty("hibernate.hbm2ddl.auto","create-drop");
 
 
         return new Configuration().addAnnotatedClass(User.class).addProperties(properties).buildSessionFactory();

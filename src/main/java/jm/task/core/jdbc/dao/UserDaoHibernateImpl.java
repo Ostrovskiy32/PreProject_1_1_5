@@ -27,7 +27,7 @@ public class UserDaoHibernateImpl implements UserDao {
                     "  `Name` VARCHAR(50) NULL," +
                     "  `lastName` VARCHAR(50) NULL," +
                     "  `Age` INT NOT NULL)";
-            session.createSQLQuery(sql).executeUpdate();
+            session.createSQLQuery(sql);
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.getCause();
@@ -85,7 +85,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public void cleanUsersTable() {
         try (Session session = factory.openSession()) {
             session.beginTransaction();
-            session.createQuery("delete User").executeUpdate();
+            session.createQuery("delete User");//надо вспоминать английский. На русском номальных объяснений мало)
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.getCause();
