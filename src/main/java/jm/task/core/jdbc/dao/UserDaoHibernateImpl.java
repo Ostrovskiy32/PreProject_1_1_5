@@ -39,8 +39,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public void dropUsersTable() {
         try (Session session = factory.openSession()) {
             session.beginTransaction();
-            session.createSQLQuery("DROP TABLE IF EXISTS task")
-                    .executeUpdate();
+            session.createSQLQuery("DROP TABLE IF EXISTS task");//конфигурация hibernate.hbm2ddl.auto позволяет в автоматическом режиме обновлять DB.
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.getCause();
@@ -85,7 +84,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public void cleanUsersTable() {
         try (Session session = factory.openSession()) {
             session.beginTransaction();
-            session.createQuery("delete User");//конфигурация hibernate.hbm2ddl.auto позволяет в автоматическом режиме обновлять DB.
+            session.createQuery("delete User").executeUpdate();//конфигурация hibernate.hbm2ddl.auto позволяет в автоматическом режиме обновлять DB.
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.getCause();
