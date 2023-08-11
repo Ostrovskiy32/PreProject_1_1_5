@@ -84,7 +84,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public void cleanUsersTable() {
         try (Session session = factory.openSession()) {
             session.beginTransaction();
-            session.createQuery("delete User").executeUpdate();//конфигурация hibernate.hbm2ddl.auto позволяет в автоматическом режиме обновлять DB.
+            session.createQuery("delete User").executeUpdate();
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.getCause();
